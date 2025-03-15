@@ -381,6 +381,82 @@
                 </div>
             </div>
         </section>
+
+        <!-- Countdown Section -->
+        <section class="relative py-20 overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10 dark:opacity-5">
+                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Cuenta Regresiva
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        No te pierdas este increíble evento
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <!-- Days -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="days" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Días</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#3B93E6] to-[#4EABC4] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="hours" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Horas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minutes -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#4EABC4] to-[#61C3A1] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="minutes" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Minutos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seconds -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="seconds" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Segundos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="text-center mt-12">
+                    <a href="/inscripcion" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3B93E6] to-[#61C3A1] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                        <span>INSCRIPCIÓN</span>
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->

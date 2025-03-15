@@ -202,10 +202,49 @@ function animateNumber(element, target) {
     animate();
 }
 
-// Initialize when DOM is loaded
+// Countdown Timer Configuration
+const EVENT_DATE = '2025-03-20T23:59:59-05:00'; // Set your event date here
+
+// Countdown Timer Logic
+function updateCountdown() {
+    const now = new Date().getTime();
+    const eventDate = new Date(EVENT_DATE).getTime();
+    const timeLeft = eventDate - now;
+
+    // If event has passed, stop countdown
+    if (timeLeft < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+    }
+
+    // Calculate time units
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Update DOM with padded numbers
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+    // Add animation class for seconds change
+    document.getElementById('seconds').classList.add('number-updated');
+    setTimeout(() => {
+        document.getElementById('seconds').classList.remove('number-updated');
+    }, 300);
+}
+
+// Initialize countdown
 document.addEventListener('DOMContentLoaded', () => {
     bannerSlider.init();
     animateStats();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
@@ -222,6 +261,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     }
+
+    // Add CSS for countdown animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes numberUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .number-updated {
+            animation: numberUpdate 0.3s ease-in-out;
+        }
+        
+        .countdown-item {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+    `;
+    document.head.appendChild(style);
 });
 
 // Global functions for navigation arrows

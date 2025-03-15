@@ -121,6 +121,68 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        /* Video container hover effect */
+        .video-container {
+            position: relative;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(97, 195, 161, 0.1), rgba(78, 171, 196, 0.1), rgba(59, 147, 230, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container:hover::before {
+            opacity: 1;
+        }
+
+        /* Stats cards hover effects */
+        .stat-card {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .stat-card .icon-container {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .stat-card:hover .icon-container {
+            transform: scale(1.1);
+        }
+
+        /* Total stats card gradient animation */
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
@@ -242,6 +304,83 @@
                 <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-200"></button>
             </div>
         </div>
+
+        <!-- Event Info Section -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Video Column -->
+                    <div class="video-container rounded-2xl overflow-hidden shadow-xl">
+                        <iframe 
+                            class="w-full aspect-video"
+                            src="https://www.youtube.com/embed/QEBWnECyTN4" 
+                            title="Información del Evento"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Stats Column -->
+                    <div class="space-y-8">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
+                            Impacto del Evento
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                            Descubre el alcance y la participación en nuestro evento académico
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Stat Card 1 -->
+                            <div class="stat-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center space-x-4">
+                                    <div class="icon-container p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                                        <svg class="w-6 h-6 text-[#FF9F3F]" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-gray-900 dark:text-white" data-target="547">0</div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400">Ponencias de Grupos de Investigación</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stat Card 2 -->
+                            <div class="stat-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center space-x-4">
+                                    <div class="icon-container p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                                        <svg class="w-6 h-6 text-[#3B93E6]" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-gray-900 dark:text-white" data-target="497">0</div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400">Ponencias de Semilleros de Investigación</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Stats -->
+                            <div class="stat-card md:col-span-2 gradient-animate bg-gradient-to-r from-[#61C3A1] via-[#4EABC4] to-[#3B93E6] rounded-xl p-6 shadow-lg">
+                                <div class="text-white">
+                                    <h3 class="text-xl font-semibold mb-4">Total de Participación</h3>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <div class="text-3xl font-bold" data-target="1044">0</div>
+                                            <div class="text-white/90">Ponencias Totales</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-3xl font-bold" data-target="2000">0</div>
+                                            <div class="text-white/90">Participantes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->

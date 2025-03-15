@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #0d6efd;
+    --hover-color: #0b5ed7;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-buttons {
+    margin: 20px 0;
+}
+
+.filter-buttons .btn {
+    margin: 0 8px;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.filter-buttons .btn:hover {
+    transform: translateY(-2px);
+}
+
+.filter-buttons .btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.evento-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.evento-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.evento-card .card-body {
+    padding: 1.5rem;
+}
+
+.evento-card .badge {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.evento-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.evento-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.evento-info i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.btn-detalles {
+    width: 100%;
+    border-radius: 25px;
+    padding: 10px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.evento-detalle-info {
+    margin-bottom: 1.5rem;
+}
+
+.evento-detalle-info h6 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}

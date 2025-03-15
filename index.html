@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Evento - SGEACA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#10B981',
+                        accent: '#F97316',
+                        blue: {
+                            600: '#2563EB',
+                            800: '#1D4ED8',
+                            900: '#1E3A8A',
+                            950: '#172554'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Mobile menu animations */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        #mobile-menu .relative button i {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #mobile-menu .relative div {
+            transition: max-height 0.2s ease-in-out;
+        }
+
+        /* Dropdown animations */
+        .group div {
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+        }
+
+        /* Slider animations */
+        .slide {
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide h1 {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            transition-delay: 0.2s;
+        }
+
+        .slide.active h1 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            transition-delay: 0.4s;
+        }
+
+        .slide.active p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide a {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            transition-delay: 0.6s;
+        }
+
+        .slide.active a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-black/20 backdrop-blur-lg border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="/eventos" class="flex items-center space-x-3">
+                        <img src="assets/img/logo.png" alt="SGEACA Logo" class="h-8 w-auto">
+                        <span class="font-semibold text-gray-900 dark:text-white">SGEACA</span>
+                    </a>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="/inicio" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200">INICIO</a>
+                    <a href="/calendario" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200">CALENDARIO</a>
+                    <a href="/comites" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200">COMITÉS</a>
+                    <a href="/contacto" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200">CONTACTO</a>
+                    <div class="relative group">
+                        <button class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200 flex items-center">
+                            PUBLICACIONES
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-1" role="menu">
+                                <a href="/publicaciones/articulos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">Artículos</a>
+                                <a href="/publicaciones/revistas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">Revistas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200 flex items-center">
+                            EDICIONES
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-1" role="menu">
+                                <a href="/ediciones/2024" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">2024</a>
+                                <a href="/ediciones/2023" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">2023</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/inscripcion" class="px-4 py-2 bg-[#FF9F3F] text-white rounded-md hover:bg-[#ff8c1a] transition-colors duration-200">INSCRIPCIÓN</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-800">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="/inicio" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">INICIO</a>
+                    <a href="/calendario" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">CALENDARIO</a>
+                    <a href="/comites" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">COMITÉS</a>
+                    <a href="/contacto" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">CONTACTO</a>
+                    
+                    <!-- Mobile Publicaciones Dropdown -->
+                    <div class="relative">
+                        <button class="w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200 flex justify-between items-center">
+                            PUBLICACIONES
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <div class="hidden pl-4 space-y-1">
+                            <a href="/publicaciones/articulos" class="block px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">Artículos</a>
+                            <a href="/publicaciones/revistas" class="block px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">Revistas</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Ediciones Dropdown -->
+                    <div class="relative">
+                        <button class="w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200 flex justify-between items-center">
+                            EDICIONES
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <div class="hidden pl-4 space-y-1">
+                            <a href="/ediciones/2024" class="block px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">2024</a>
+                            <a href="/ediciones/2023" class="block px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">2023</a>
+                        </div>
+                    </div>
+
+                    <a href="/inscripcion" class="block px-3 py-2 text-white bg-[#FF9F3F] hover:bg-[#ff8c1a] rounded-md transition-colors duration-200">INSCRIPCIÓN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Banner Slider -->
+        <div class="relative w-full h-[600px] overflow-hidden">
+            <div id="banner-slider" class="relative w-full h-full">
+                <!-- Slides will be dynamically inserted here by JavaScript -->
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors duration-200 backdrop-blur-sm" onclick="prevSlide()">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors duration-200 backdrop-blur-sm" onclick="nextSlide()">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+            
+            <!-- Navigation Dots -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3">
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-200"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-200"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-200"></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo y descripción -->
+                <div class="col-span-1 md:col-span-1">
+                    <img src="assets/img/logo.png" alt="SGEACA Logo" class="h-12 w-auto mb-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Sistema de Gestión de Eventos Académicos y de Capacitación
+                    </p>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                        Síguenos
+                    </h3>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                            <i class="fab fa-facebook-f w-5"></i>
+                            <span class="ml-2">Facebook</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-400 dark:hover:text-blue-400">
+                            <i class="fab fa-twitter w-5"></i>
+                            <span class="ml-2">Twitter</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400">
+                            <i class="fab fa-instagram w-5"></i>
+                            <span class="ml-2">Instagram</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-800 dark:hover:text-blue-400">
+                            <i class="fab fa-linkedin-in w-5"></i>
+                            <span class="ml-2">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                        Contacto
+                    </h3>
+                    <div class="space-y-3">
+                        <p class="flex items-center text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-map-marker-alt w-5"></i>
+                            <span class="ml-2">Av. Universidad 123, Ciudad Universitaria</span>
+                        </p>
+                        <p class="flex items-center text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-phone w-5"></i>
+                            <span class="ml-2">+51 123 456 789</span>
+                        </p>
+                        <p class="flex items-center text-gray-600 dark:text-gray-400">
+                            <i class="fas fa-envelope w-5"></i>
+                            <span class="ml-2">contacto@sgeaca.edu.pe</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                        Legal
+                    </h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                            Términos y Condiciones
+                        </a>
+                        <a href="#" class="block text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                            Política de Privacidad
+                        </a>
+                        <a href="#" class="block text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                            Licencia CC BY-NC-SA 4.0
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                    2024 SGEACA. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

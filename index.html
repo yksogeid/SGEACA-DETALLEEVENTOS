@@ -183,6 +183,54 @@
                 background-position: 0% 50%;
             }
         }
+
+        /* Timeline styles */
+        .horizontal-timeline {
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .timeline-container {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item {
+            flex-shrink: 0;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .timeline-content {
+            margin-top: 10px;
+        }
+
+        .timeline-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
@@ -382,11 +430,124 @@
             </div>
         </section>
 
+        <!-- Timeline Section -->
+        <section class="relative py-20 overflow-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+                        Cronograma del Evento
+                    </h2>
+                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                        Fechas importantes que debes tener en cuenta
+                    </p>
+                </div>
+
+                <!-- Horizontal Timeline -->
+                <div class="relative horizontal-timeline">
+                    <!-- Timeline Items Container -->
+                    <div class="timeline-container">
+                        <!-- June 18 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>18 de junio</h3>
+                                <p>Inicio de recepción de resúmenes</p>
+                            </div>
+                        </div>
+
+                        <!-- August 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>2 de agosto</h3>
+                                <p>Fecha límite de recepción de resúmenes</p>
+                            </div>
+                        </div>
+
+                        <!-- August 26 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>26 de agosto</h3>
+                                <p>Fecha de comunicación de resultados</p>
+                            </div>
+                        </div>
+
+                        <!-- September 9 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>9 de septiembre</h3>
+                                <p>Fecha de publicación de la programación</p>
+                            </div>
+                        </div>
+
+                        <!-- October 14 (First) -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>14 de octubre</h3>
+                                <p>Fecha límite para registrar el pago</p>
+                            </div>
+                        </div>
+
+                        <!-- October 14 (Second) -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>14 de octubre</h3>
+                                <p>Fecha límite de envío del video y presentación</p>
+                            </div>
+                        </div>
+
+                        <!-- October 18 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>18 de octubre</h3>
+                                <p>Fecha límite de presentación de trabajos a revistas</p>
+                            </div>
+                        </div>
+
+                        <!-- October 22 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>22 de octubre</h3>
+                                <p>Inicio del evento</p>
+                            </div>
+                        </div>
+
+                        <!-- October 25 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h3>25 de octubre</h3>
+                                <p>Finalización del evento</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <button class="timeline-nav-btn prev" aria-label="Previous">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button class="timeline-nav-btn next" aria-label="Next">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Countdown Section -->
         <section class="relative py-20 overflow-hidden">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-10 dark:opacity-5">
-                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
             </div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

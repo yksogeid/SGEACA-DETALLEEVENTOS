@@ -761,4 +761,81 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = 'translateY(20px)';
         speakerObserver.observe(card);
     });
+
+    // Add styles for topic cards
+    const topicCardStyles = document.createElement('style');
+    topicCardStyles.textContent = `
+        .topic-card {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .topic-card .relative {
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-card i {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .topic-card:hover i {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .topic-card h3 {
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover h3 {
+            background: linear-gradient(to right, #3B93E6, #61C3A1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .topic-card p {
+            position: relative;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card p::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover p::before {
+            color: #3B93E6;
+            transform: scale(1.2);
+        }
+
+        .topic-card:hover p {
+            transform: translateX(4px);
+        }
+
+        .topic-card .absolute {
+            transition: all 0.5s ease;
+        }
+
+        .topic-card:hover .absolute {
+            transform: translate(0, 0) scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .topic-card:hover {
+                transform: translateY(-4px);
+            }
+
+            .topic-card:hover p {
+                transform: translateX(2px);
+            }
+        }
+    `;
+    document.head.appendChild(topicCardStyles);
 });

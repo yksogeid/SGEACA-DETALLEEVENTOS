@@ -6,232 +6,9 @@
     <title>Detalle del Evento - SGEACA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#2563EB',
-                        secondary: '#10B981',
-                        accent: '#F97316',
-                        blue: {
-                            600: '#2563EB',
-                            800: '#1D4ED8',
-                            900: '#1E3A8A',
-                            950: '#172554'
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="/assets/js/tailwindcss.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .glass-effect {
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        /* Mobile menu animations */
-        #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        #mobile-menu .relative button i {
-            transition: transform 0.2s ease-in-out;
-        }
-
-        #mobile-menu .relative div {
-            transition: max-height 0.2s ease-in-out;
-        }
-
-        /* Dropdown animations */
-        .group div {
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-        }
-
-        /* Slider animations */
-        .slide {
-            opacity: 0;
-            transform: scale(1.05);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .slide h1 {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-            transition-delay: 0.2s;
-        }
-
-        .slide.active h1 {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .slide p {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-            transition-delay: 0.4s;
-        }
-
-        .slide.active p {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .slide a {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-            transition-delay: 0.6s;
-        }
-
-        .slide.active a {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Video container hover effect */
-        .video-container {
-            position: relative;
-            transform: translateY(0);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .video-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(97, 195, 161, 0.1), rgba(78, 171, 196, 0.1), rgba(59, 147, 230, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .video-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-container:hover::before {
-            opacity: 1;
-        }
-
-        /* Stats cards hover effects */
-        .stat-card {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px) scale(1.02);
-        }
-
-        .stat-card .icon-container {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .stat-card:hover .icon-container {
-            transform: scale(1.1);
-        }
-
-        /* Total stats card gradient animation */
-        .gradient-animate {
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Timeline styles */
-        .horizontal-timeline {
-            position: relative;
-            padding: 0 20px;
-        }
-
-        .timeline-container {
-            display: flex;
-            overflow-x: auto;
-            padding-bottom: 20px;
-        }
-
-        .timeline-item {
-            flex-shrink: 0;
-            margin-right: 20px;
-            text-align: center;
-        }
-
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin: 0 auto;
-        }
-
-        .timeline-content {
-            margin-top: 10px;
-        }
-
-        .timeline-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .prev {
-            left: 0;
-        }
-
-        .next {
-            right: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
     <!-- Navbar -->
@@ -426,6 +203,82 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="relative py-20 overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10 dark:opacity-5">
+                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Cuenta Regresiva
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        No te pierdas este increíble evento
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <!-- Days -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="days" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Días</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#3B93E6] to-[#4EABC4] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="hours" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Horas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minutes -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#4EABC4] to-[#61C3A1] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="minutes" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Minutos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seconds -->
+                    <div class="countdown-item group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                                <div id="seconds" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Segundos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="text-center mt-12">
+                    <a href="/inscripcion" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3B93E6] to-[#61C3A1] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                        <span>INSCRIPCIÓN</span>
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
@@ -832,81 +685,7 @@
             </div>
         </section>
 
-        <!-- Countdown Section -->
-        <section class="relative py-20 overflow-hidden">
-            <!-- Background Pattern -->
-            <div class="absolute inset-0 opacity-10 dark:opacity-5">
-                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-            </div>
-
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Cuenta Regresiva
-                    </h2>
-                    <p class="text-lg text-gray-600 dark:text-gray-400">
-                        No te pierdas este increíble evento
-                    </p>
-                </div>
-
-                <!-- Countdown Timer -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                    <!-- Days -->
-                    <div class="countdown-item group">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                                <div id="days" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">Días</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hours -->
-                    <div class="countdown-item group">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#3B93E6] to-[#4EABC4] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                                <div id="hours" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">Horas</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Minutes -->
-                    <div class="countdown-item group">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#4EABC4] to-[#61C3A1] rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                                <div id="minutes" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">Minutos</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Seconds -->
-                    <div class="countdown-item group">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#61C3A1] to-[#3B93E6] rounded-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                            <div class="relative bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                                <div id="seconds" class="text-5xl font-bold text-gray-900 dark:text-white mb-2">00</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">Segundos</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <div class="text-center mt-12">
-                    <a href="/inscripcion" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3B93E6] to-[#61C3A1] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
-                        <span>INSCRIPCIÓN</span>
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
+        
     </main>
 
     <!-- Footer -->

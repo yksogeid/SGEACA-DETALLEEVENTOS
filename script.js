@@ -638,4 +638,127 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global functions for navigation arrows
     window.nextSlide = () => bannerSlider.nextSlide();
     window.prevSlide = () => bannerSlider.prevSlide();
+
+    // Add styles for speaker cards
+    const speakerCardStyles = document.createElement('style');
+    speakerCardStyles.textContent = `
+        .speaker-card {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .speaker-card .relative {
+            position: relative;
+            z-index: 1;
+        }
+
+        .speaker-card .relative::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(59, 147, 230, 0.05), rgba(97, 195, 161, 0.05));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark .speaker-card .relative::before {
+            background: linear-gradient(45deg, rgba(59, 147, 230, 0.1), rgba(97, 195, 161, 0.1));
+        }
+
+        .speaker-card:hover .relative::before {
+            opacity: 1;
+        }
+
+        .speaker-card img.rounded-full {
+            transform: scale(1) rotate(0);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backface-visibility: hidden;
+            border: 2px solid transparent;
+        }
+
+        .speaker-card:hover img.rounded-full {
+            transform: scale(1.05) rotate(-2deg);
+            border-color: #3B93E6;
+        }
+
+        .dark .speaker-card:hover img.rounded-full {
+            border-color: #60A5FA;
+        }
+
+        .speaker-card .ring-4 {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .speaker-card:hover .ring-4 {
+            box-shadow: 0 8px 16px -4px rgba(59, 147, 230, 0.2),
+                        0 0 0 2px rgba(59, 147, 230, 0.1);
+        }
+
+        .dark .speaker-card:hover .ring-4 {
+            box-shadow: 0 8px 16px -4px rgba(59, 147, 230, 0.4),
+                        0 0 0 2px rgba(59, 147, 230, 0.2);
+        }
+
+        .speaker-card h3,
+        .speaker-card p {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .speaker-card:hover h3 {
+            transform: translateY(-2px);
+            background: linear-gradient(to right, #3B93E6, #61C3A1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .speaker-card p {
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover p:last-child {
+            transform: translateY(2px);
+            color: #3B93E6;
+        }
+
+        .dark .speaker-card:hover p:last-child {
+            color: #60A5FA;
+        }
+
+        @media (max-width: 768px) {
+            .speaker-card:hover {
+                transform: translateY(-4px);
+            }
+
+            .speaker-card:hover img.rounded-full {
+                transform: scale(1.03) rotate(-1deg);
+            }
+        }
+    `;
+    document.head.appendChild(speakerCardStyles);
+
+    // Add intersection observer for speaker cards
+    const speakerCards = document.querySelectorAll('.speaker-card');
+    const speakerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+
+    speakerCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        speakerObserver.observe(card);
+    });
 });
